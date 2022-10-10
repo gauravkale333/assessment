@@ -1,0 +1,123 @@
+<div class="home-content">
+   
+
+   <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon >menu</mat-icon>
+      </button>
+      <h1>SimpleCRM</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/home'"> Accounts </a>
+        <a mat-button [routerLink]="'/home'"> Create Account </a>
+        <a mat-button [routerLink]="'/home'"> Contacts </a>
+        <a mat-button [routerLink]="'/home'"> Create Contact </a>
+        <a mat-button [routerLink]="'/home'"> Activities </a>
+        <a mat-button [routerLink]="'/home'"> Create Activity </a>
+        <a mat-button (click)="logout()"> logout
+          <i class="nc-icon nc-single-02"></i>
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-card>
+    <mat-card-content>
+      <div class="header">
+        <h2>AssessmentTest Details </h2>
+      </div>
+      <form (ngSubmit)="onSubmit()" name="detailForm" [formGroup]="detailForm">
+        <div class="nameInput">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              formControlName="name"
+              matInput
+              placeholder="Enter Name " required
+            />
+            <mat-error *ngIf="!detailForm.controls['name'].valid">
+                Name is required
+              </mat-error>
+          </mat-form-field>
+        </div>  
+        <div class="mobileInput">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Mobile No.</mat-label>
+            <input
+              formControlName="mobile"
+              matInput
+              placeholder="Enter Mobile No. " required
+            />
+            <mat-error *ngIf="!detailForm.controls['mobile'].valid">
+              Mobile is required
+              </mat-error>
+          </mat-form-field>
+        </div>  
+        <div class="addressInput">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input
+              formControlName="address"
+              matInput
+              placeholder="Enter Address " required
+            />
+            <mat-error *ngIf="!detailForm.controls['address'].valid">
+              Address is required
+              </mat-error>
+          </mat-form-field>
+        </div>  
+        <div class="skillsInput">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Skills</mat-label>
+            <input
+              formControlName="skills"
+              matInput
+              placeholder="Enter Skills " required
+            />
+            <mat-error *ngIf="!detailForm.controls['skills'].valid">
+              Skills is required
+              </mat-error>
+          </mat-form-field>
+        </div>  
+        <div>
+          <mat-form-field class="multiple-items">
+            <mat-chip-list #chipList>
+              <mat-chip
+                *ngFor="let hobbies of hobbiesArray"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="remove(hobbies)"
+              >
+                {{ hobbies.name }}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input
+                placeholder="Add hobbies"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)"
+              />
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+        <div class="photoInput">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>photo</mat-label>
+            <input
+              formControlName="photo"
+              matInput
+              placeholder="Enter photo " required
+            />
+            <mat-error *ngIf="!detailForm.controls['photo'].valid">
+              photo is required
+              </mat-error>
+          </mat-form-field>
+        </div>  
+      <button mat-flat-button color="primary" >Submit</button>
+      <button mat-flat-button (click)="clear()"color="primary">Reset</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
