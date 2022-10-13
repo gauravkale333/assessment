@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FileUploadService } from '../file-upload.service';
@@ -13,14 +13,23 @@ export class FileUploadComponent implements OnInit {
   currentFile?: File;
   progress = 0;
   message = '';
-
+  //@Input() reset: any;
   fileInfos?: Observable<any>;
 
   constructor(private uploadService : FileUploadService) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // if(this.reset){
+    //   this.message = '';
+    //   this.progress = 0;
+    // }
+   
   }
-
+//  ngOnChanges(){
+//   if(this.reset){
+//       this.message = '';
+//       this.progress = 0;
+//     }
+//  }
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
   }
@@ -61,5 +70,4 @@ export class FileUploadComponent implements OnInit {
       this.selectedFiles = undefined;
     }
   }
-
 }

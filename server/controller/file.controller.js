@@ -1,4 +1,5 @@
 const uploadFile = require("../upload/upload");
+const fs = require('fs');
 
 const upload = async (req, res) => {
   try {
@@ -33,7 +34,7 @@ const getListFiles = (req, res) => {
     files.forEach((file) => {
       fileInfos.push({
         name: file,
-        url: baseUrl + file,
+        url: __basedir + file,
       });
     });
 

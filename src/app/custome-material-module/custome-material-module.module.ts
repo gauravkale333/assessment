@@ -9,7 +9,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
       MatTableModule,
       MatMenuModule,
       MatIconModule,
+      MatChipsModule,
       MatProgressSpinnerModule,
       MatFormFieldModule
   ],
@@ -36,6 +38,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
        MatTableModule,
        MatMenuModule,
        MatIconModule,
+       MatChipsModule,
        MatProgressSpinnerModule,
        MatFormFieldModule
    ],

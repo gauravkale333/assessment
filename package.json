@@ -9,6 +9,15 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "keywords": [
+    "node js",
+    "upload",
+    "download",
+    "file",
+    "multipart",
+    "rest api",
+    "express"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.1.2",

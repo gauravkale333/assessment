@@ -21,19 +21,19 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-
-  <mat-card>
+  <div class="main-div">
+  <mat-card >
     <mat-card-content>
       <div class="header">
         <h2>AssessmentTest Details </h2>
       </div>
       <form (ngSubmit)="onSubmit()" name="detailForm" [formGroup]="detailForm">
         <div class="nameInput">
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field  appearance="outline">
             <mat-label>Name</mat-label>
             <input
               formControlName="name"
-              matInput
+              matInput type="text"
               placeholder="Enter Name " required
             />
             <mat-error *ngIf="!detailForm.controls['name'].valid">
@@ -103,21 +103,13 @@
           </mat-form-field>
         </div>
         <div class="photoInput">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>photo</mat-label>
-            <input
-              formControlName="photo"
-              matInput
-              placeholder="Enter photo " required
-            />
-            <mat-error *ngIf="!detailForm.controls['photo'].valid">
-              photo is required
-              </mat-error>
-          </mat-form-field>
+          <app-file-upload [reset]="uploadReset"></app-file-upload>
+        <!-- <app-file-upload [reset]="uploadReset"></app-file-upload> -->
         </div>  
       <button mat-flat-button color="primary" >Submit</button>
       <button mat-flat-button (click)="clear()"color="primary">Reset</button>
       </form>
     </mat-card-content>
   </mat-card>
+  </div>
 </div>

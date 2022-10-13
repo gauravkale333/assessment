@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { FormGroup, FormBuilder } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators} from '@angular/forms'
 
 
+// tslint:disable-next-line: class-name
 export interface hobbies {
     name: string;
   }
@@ -20,19 +21,19 @@ export class HomeComponent implements OnInit {
     selectable = true;
     removable = true;
     addOnBlur = true;
-    hobbiesArray: hobbies[] = [];
+    detailForm: FormGroup;
     @ViewChild('chipList', { static: true }) chipList;
+    hobbiesArray: hobbies[] = [];
+    uploadReset:boolean;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  constructor(private service: LogoutService, private router: Router,public fb: FormBuilder) { }
-  
- 
+  constructor(private service: LogoutService, private router: Router, public fb: FormBuilder) { }
   ngOnInit(): void {
     this.detailForm = this.fb.group({
-        name: [''],
-        mobile: [''],
-        address: [''],
+        name: ['', [Validators.required]],
+        mobile: ['', [Validators.required]],
+        address: ['', [Validators.required]],
         skills: [''],
-        hobbies:[this.hobbiesArray],
+        hobbies:[ this.hobbiesArray],
         photo: [''],
       });
   }
@@ -49,11 +50,13 @@ export class HomeComponent implements OnInit {
     });
 };
 
+// tslint:disable-next-line: typedef
 onSubmit(){
-    console.log(this.detailForm.value);
+    console.log("detailForm values",this.detailForm.value);
 }
 clear(){
     this.detailForm.reset();
+    this.uploadReset = true;
 }
 add(event: MatChipInputEvent): void {
     const input = event.input;
